@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <title>BMR & BMI</title>
+</head>
+
+<body style="background-image: url(image4.jpeg);">
+  <br><br><br>
+  <div class="container">
+    <h1 class="text-center"style="color:pink;">Energy Metabolism Calculator (BMR)</h1><br>
+    <div class="row p-3 mb-2 bg-light text-dark">
+      <div class="col-6 text-center ">
+        <form method="POST" name="bmrform">
+          <br>
+          <h2>BMR Calculations</h2>
+          <br>
+          <div class="form-check form-check-inline">
+            <input type="radio" aria-label="Radio button " name="Male" id="Male">Male
+            <input type="radio" aria-label="Radio button " name="Female" id="Female">Female
+          </div>
+          <p></p>
+
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">Enter Weight in Kgs </label>
+            <input type="text" class="form-control" id="weight" value="" size="20" placeholder="Enter weight in Kgs"
+              name="weight" required>
+          </div>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">Enter Height in Cms </label>
+            <input type="text" class="form-control" id="height" value="" size="20" placeholder="Enter height in Cms"
+              name="height" required>
+          </div>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">Enter Age in Years </label>
+            <input type="text" class="form-control" id="age" value="" size="20" placeholder="Enter age in Years"
+              name="age" required> <br>
+          </div>
+          <br>
+
+          <input type="reset" class="btn btn-outline-secondary" value="Reset">
+          <input type="button" class="btn btn-outline-success" value="Calculate BMR" onclick="calBMR();" id="cal"><br>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">BMR : </label>
+            <input type="text" class="form-control" value="" size="20" placeholder="Result - BMR" name="bmr" id="bmr"
+              readonly>
+          </div>
+          <br>
+        
+      </div>
+
+      <div class="col-6">
+          <br>
+          <h2 class="text-center">TDEE Calculations</h2>
+          <br>
+
+          <input type="button" name="TDEE_1" id="TDEE_1" class="btn btn-block btn-outline-secondary" onclick="calTDEE_1(document.getElementById('bmr').value)" value="Sitting at work and not exercising at all.">
+          <input type="button" name="TDEE_2" id="TDEE_2" class="btn btn-block btn-outline-primary" onclick="calTDEE_2(document.getElementById('bmr').value)" value="Moderate exercise or sports about 1-2 days a week.">
+          <input type="button" name="TDEE_3" id="TDEE_3" class="btn btn-block btn-outline-success" onclick="calTDEE_3(document.getElementById('bmr').value)" value="Moderate exercise or sports about 3-5 days a week.">
+          <input type="button" name="TDEE_4" id="TDEE_4" class="btn btn-block btn-outline-warning" onclick="calTDEE_4(document.getElementById('bmr').value)" value="Exercise or play sport about 6-7 days a week.">
+          <input type="button" name="TDEE_5" id="TDEE_5" class="btn btn-block btn-outline-danger" onclick="calTDEE_5(document.getElementById('bmr').value)" value="Exercise or play sports hard every day, morning and evening.">
+          <p></p><br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">TDEE : </label>
+            <input type="text" class="form-control" value="" size="20" placeholder="Result - TDEE" name="tdee" id="tdee"
+              readonly>
+          </div>
+        </form>
+      </div>
+    </div>
+    <br>
+    <h1 class="text-center">Body Mass Index (BMI) Calculator</h1>
+    <br>
+    <div class="row p-3 mb-2 bg-light text-dark">
+      <div class="col-6 text-center">
+
+        <form method="POST" name="bmiform">
+          <br>
+          <h2 class="text-center">BMI Calculations</h2>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">Enter Weight in Kgs </label>
+            <input type="text" class="form-control" id="weight" value="" size="20" placeholder="Enter weight in Kgs"
+              name="weight" required>
+          </div>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">Enter Height in Cms </label>
+            <input type="text" class="form-control" id="height" value="" size="20" placeholder="Enter height in Cms"
+              name="height" required>
+          </div>
+          <br>
+          
+          <input type="reset" class="btn btn-outline-secondary" value="Reset">
+          <input type="button" class="btn btn-outline-success" value="Calculate BMI" onclick="calBMI();" id="cal"><br>
+          <br>
+          <div class="form-inline">
+            <label class="col-sm-6 col-form-label">BMI : </label>
+            <input type="text" class="form-control" value="" size="20" placeholder="Result - BMI" name="bmi" id="bmi"
+              readonly>
+          </div>
+          <br>
+        </form>
+      </div>
+      <div class="col-6">
+        <br>
+          <h2 class="text-center">BMI Table</h2>
+          <br>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">BMI kg/m2</th>
+              <th scope="col">Stay in the net</th>
+              <th scope="col">Risk of disease</th>
+            </tr>
+          </thead>
+          <tbody id="table_1">
+            <tr >
+              <td>Less than 18.50</td>
+              <td>Low weight / skinny</td>
+              <td>More than normal people.</td>
+            </tr>
+            <tr>
+              <td> 18.50 - 22.99</td>
+              <td>Normal (healthy)</td>
+              <td>As much as a normal person.</td>
+            </tr>
+            <tr>
+              <td>23 - 24.99</td>
+              <td>Chubby / Obesity Level 1</td>
+              <td>Hazard Level 1</td>
+            </tr>
+            <tr>
+              <td> 25 - 29.99</td>
+              <td>Obese / Obesity Grade 2</td>
+              <td>Hazard Level 2</td>
+            </tr>
+            <tr>
+              <td>More than  30</td>
+              <td>Very obese / Obesity grade 3</td>
+              <td>Hazard Level 3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br><br><br>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
